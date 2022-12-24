@@ -1,10 +1,75 @@
-String lorem =
-    """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elementum augue eget tortor blandit auctor. Aliquam eu nibh condimentum, pretium lacus a, dapibus risus. Nulla eros risus, posuere at tincidunt ac, pellentesque ut enim. Suspendisse mollis urna sit amet rhoncus efficitur. In non iaculis dolor. In venenatis sit amet orci in sagittis. Maecenas sit amet porta dui. Etiam eu ligula eget justo semper mollis. Morbi nec felis facilisis, tempus dolor eu, vestibulum risus. Cras ultricies magna non dolor facilisis ultricies. Vestibulum dapibus libero et vulputate interdum. Duis laoreet mi massa, ac aliquam ipsum condimentum in. Morbi interdum libero non dapibus condimentum. Duis augue eros, finibus sed vestibulum vitae, scelerisque quis nunc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-
-Ut eu cursus odio. Nulla facilisi. Curabitur eget tempus ipsum. Suspendisse viverra urna non pretium ullamcorper. Pellentesque at consectetur felis. Sed a euismod est. Nam vel orci eleifend, eleifend felis at, euismod felis. Vestibulum erat dolor, feugiat quis tortor quis, ornare malesuada nisl. Cras lacus urna, pellentesque non risus ac, ornare ornare purus.
-
-Morbi at dui at elit lacinia facilisis id ut leo. Nunc porttitor quam eget urna pellentesque, sed congue ante commodo. Morbi id molestie odio, id mollis mi. Ut nec mauris in ligula faucibus varius. Mauris eu purus at ante consectetur semper quis sed neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In ligula diam, interdum eget tempor tempus, blandit vitae massa. Maecenas nec metus sed urna faucibus fermentum vel nec tortor. Cras nec facilisis massa. Suspendisse potenti. Quisque varius non mi sed lacinia. Nullam augue orci, suscipit et velit et, luctus tempus quam. Vestibulum volutpat euismod venenatis. Praesent a orci fringilla, dapibus magna in, pharetra ipsum. Cras finibus vitae massa nec rutrum.
-
-Maecenas vehicula ex vitae vulputate finibus. Integer a mauris tincidunt, rhoncus turpis et, faucibus purus. In sed mi eu lacus condimentum gravida non aliquet nisl. Fusce euismod bibendum massa, gravida tempor ante. Praesent finibus venenatis eros id facilisis. Vivamus in leo at eros tempor ornare. Aliquam erat volutpat. Proin et euismod eros. Proin mollis risus quam, nec dapibus mi gravida vel. Integer et rutrum turpis. Sed turpis urna, ultricies et nibh ut, porta tincidunt odio. Ut egestas est in nunc bibendum rhoncus.
-
-Suspendisse potenti. Nulla fermentum in nisi eget fermentum. Morbi gravida orci nulla, id faucibus nulla rhoncus sit amet. Morbi cursus, nibh eu vehicula lobortis, nisi elit gravida nibh, a imperdiet tellus tortor at eros. Quisque feugiat nibh eleifend, dictum mauris vitae, interdum ipsum. Sed sed urna laoreet, fermentum tellus id, viverra urna. Cras varius ut arcu eget venenatis. Fusce suscipit euismod quam, in condimentum elit finibus ac. Praesent mollis, ante semper auctor lacinia, orci velit pulvinar justo, vitae scelerisque sapien purus vel libero. Suspendisse faucibus orci eget nulla scelerisque, sed convallis diam cursus. Integer lectus massa, vestibulum id erat at, egestas efficitur est. Curabitur porttitor fermentum lectus ac fermentum. Suspendisse ultrices consectetur tortor et consectetur. Ut efficitur elementum purus at dignissim. Nullam sit amet dolor justo. Maecenas nec vehicula metus.""";
+// FutureBuilder<List<Noticias>>(
+// future: getNoticias(),
+// builder: (context, snapshot) {
+// if (snapshot.connectionState == ConnectionState.done) {
+// return Column(
+// children: [
+// FutureBuilder<List>(
+// future: getAnuncios(),
+// builder: (context, snapshot) {
+// if (snapshot.connectionState == ConnectionState.done) {
+// snapshot.data!.removeAt(0);
+// return Row(
+// children: [
+// ListView.builder(
+// itemCount: snapshot.data!.length,
+// scrollDirection: Axis.horizontal,
+// itemBuilder: (ctx, index) {
+// return Image.network(snapshot.data![index]);
+// },
+// ),
+// ],
+// );
+// } else if (snapshot.connectionState ==
+// ConnectionState.waiting) {
+// return Container(
+// height: 100,
+// color: Colors.blue,
+// child: const Center(
+// child: CircularProgressIndicator(
+// color: Colors.white,
+// strokeWidth: 2.0,
+// ),
+// ),
+// );
+// } else {
+// return const Text('Erro');
+// }
+// }),
+// Expanded(
+// child: ListView.separated(
+// scrollDirection: Axis.vertical,
+// separatorBuilder: (context, index) => const Divider(),
+// itemCount: 10,
+// itemBuilder: (context, index) {
+// return Padding(
+// padding: const EdgeInsets.only(
+// right: 2.0,
+// left: 2.0,
+// top: 2.0,
+// ),
+// child: bannerNews(
+// context,
+// titilo: snapshot.data![index].titilo,
+// data: snapshot.data![index].data,
+// texto: snapshot.data![index].texto,
+// capa: snapshot.data![index].capa,
+// src: snapshot.data![index].capa,
+// titulo: snapshot.data![index].titilo,
+// ),
+// );
+// },
+// ),
+// )
+// ],
+// );
+// } else if (snapshot.hasError) {
+// return const Center(child: Text('Erro ao Carregar dados'));
+// } else {
+// return const Center(
+// child: CircularProgressIndicator(
+// strokeWidth: 2.0,
+// ));
+// }
+// },
+// ),
